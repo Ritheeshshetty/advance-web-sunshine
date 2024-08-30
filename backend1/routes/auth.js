@@ -8,6 +8,11 @@ const fetchuser = require("../middleware/fetchuser");
 
 const JWT_SECRET = "hacker";
 
+// router.get("/rithu", (req, res) => {
+//  console.log(req.body);
+//  const user=User(req.body);
+//  user.save()
+// });
 //ROUTE 1: create a User using:Post "/api/auth/createuser".No login required
 router.post(
   "/createuser",
