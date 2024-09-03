@@ -26,6 +26,9 @@ const NavBar = () => {
         <li>
           <Link to="/technology">technology</Link>
         </li>
+        <li className="search">
+          <input type="text" alt="search"/>
+        </li>
       </div>
       {/* <nav className='navbar'>
   <ul>

@@ -35,7 +35,14 @@ header {
 }
 .category li {
   list-style: none;
+  background-color: #737373;
+  padding: 10px;
+  border-radius: 20px;
 }
+.category li a {
+  color: white;
+}
+
 ul {
   display: flex;
   flex-direction: column;
@@ -48,7 +55,8 @@ ul li {
   /* margin-left: 90px; */
 }
 
-ul li a,ul li button {
+ul li a,
+ul li button {
   font-size: 15px;
   font-weight: 700;
   text-decoration: none;
@@ -91,7 +99,7 @@ nav {
   /* flex-wrap: wrap; */
   padding: 20px 20px;
 }
-.menu{
+.menu {
   background: inherit;
   border: 0;
   position: fixed;
