@@ -16,7 +16,7 @@ import Contact from './components/Contact';
 
 
 const App=()=>{
-  const pageSize=8
+  const pageSize=8;
   const apiKey=process.env.REACT_APP_NEWS_API
   // eslint-disable-next-line
   const [progress, setProgress] = useState(0)

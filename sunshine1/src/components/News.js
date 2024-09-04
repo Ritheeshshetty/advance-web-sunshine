@@ -3,21 +3,21 @@ import NewsItem from "./NewsItem";
 import Spinner from "./Spinner";
 import PropTypes from "prop-types";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 const News = (props) => {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(0);
   const [totalResults, setTotalResults] = useState(0);
-  const [menu, setMenu] = useState(20);
-  const handleClick = () => {
-    if (menu === 250) {
-      setMenu(20);
-    } else {
-      setMenu(250);
-    }
-  };
+  // const [menu, setMenu] = useState(20);
+  // const handleClick = () => {
+  //   if (menu === 250) {
+  //     setMenu(20);
+  //   } else {
+  //     setMenu(250);
+  //   }
+  // };
 
   const capitalizeFirstLetter = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
@@ -25,7 +25,17 @@ const News = (props) => {
 
   const updateNews = async () => {
     props.setProgress(10);
-    const url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&category=${props.category}&category=${props.category}&apiKey=${props.apiKey}&page=${page}&pageSize=${props.pageSize}`;
+    // const url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&category=${props.category}&category=${props.category}&apiKey=${props.apiKey}&page=${page}&pageSize=${props.pageSize}`;
+    // const url = `https://newsapi.org/v2/top-headlines?country=${
+    //   props.country
+    // }&category=${props.category}&category=${props.category}&apiKey=${
+    //   props.apiKey
+    // }&page=${page < 1 ? page : page + 1}&pageSize=${props.pageSize}`;
+    const url = `https://newsapi.org/v2/top-headlines?&category=${
+      props.category
+    }&category=${props.category}&apiKey=${props.apiKey}&page=${
+      page < 1 ? page : page + 1
+    }&pageSize=${props.pageSize}`;
     setLoading(true);
     let data = await fetch(url);
     props.setProgress(30);
@@ -38,18 +48,25 @@ const News = (props) => {
   };
 
   useEffect(() => {
-    document.title = `${capitalizeFirstLetter(props.category)} - NewsDozer`;
+    document.title = `${capitalizeFirstLetter(
+      props.category
+    )} - SunShine Express`;
     updateNews();
     // eslint-disable-next-line
   }, []);
 
   const fetchMoreData = async () => {
     setPage(page + 1);
-    const url = `https://newsapi.org/v2/top-headlines?country=${
-      props.country
-    }&category=${props.category}&category=${props.category}&apiKey=${
-      props.apiKey
-    }&page=${page < 1 ? page : page + 1}&pageSize=${props.pageSize}`;
+    // https://newsapi.org/v2/top-headlines?&category=general&apiKey=088cd910e6d543288bfb7e4deb16587c&page=3&pageSize=4
+    const url = `https://newsapi.org/v2/top-headlines?&category=${
+      props.category
+    }&category=${props.category}&apiKey=${props.apiKey}&page=${
+      page < 1 ? page : page + 1
+    }&pageSize=${props.pageSize}`;
+    // const url = `https://newsapi.org/v2/top-headlines?country=${props.country
+    // }&category=${props.category}&category=${props.category}&apiKey=${
+    //   props.apiKey
+    // }&page=${page < 1 ? page : page + 1}&pageSize=${props.pageSize}`;
     let data = await fetch(url);
     let parsedData = await data.json();
     setArticles(articles.concat(parsedData.articles));
@@ -60,7 +77,7 @@ const News = (props) => {
       <header>
         Sunshine Express - Top {capitalizeFirstLetter(props.category)} Headlines
       </header>
-      <nav className="navbar" style={{ "minWidth":`${menu}px` }}>
+      {/* <nav className="navbar" style={{ minWidth: `${menu}px` }}>
         <ul>
           <button className="menu" onClick={handleClick}>
             {menu === 250 ? (
@@ -72,56 +89,59 @@ const News = (props) => {
           {menu === 250 ? (
             <li>
               <Link to="/home">
-                <i class="fa-solid fa-house">
-                  &nbsp;
-                  home&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <i className="fa-solid fa-house">
+                  &nbsp; home&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 </i>
               </Link>
             </li>
           ) : (
             <li>
               <Link to="/home">
-                <i class="fa-solid fa-house fa-xl"></i>
+                <i className="fa-solid fa-house fa-xl"></i>
               </Link>
             </li>
           )}
           {menu === 250 ? (
             <li>
               <Link to="/about">
-                <i class="fa-regular fa-solid fa-paper-plane"> about us</i>
+                <i className="fa-regular fa-solid fa-paper-plane"> about us</i>
               </Link>
             </li>
           ) : (
             <li>
               <Link to="/about">
-                <i class="fa-regular fa-paper-plane fa-xl"></i>
+                <i className="fa-regular fa-paper-plane fa-xl"></i>
               </Link>
             </li>
           )}
           {menu === 250 ? (
             <li>
               <Link to="/contact">
-                <i class="fa-regular fa-solid fa-envelope"> contact</i>
+                <i className="fa-regular fa-solid fa-envelope"> contact</i>
               </Link>
             </li>
           ) : (
             <li>
               <Link to="/contact">
-                <i class="fa-regular fa-envelope fa-xl"> </i>
+                <i className="fa-regular fa-envelope fa-xl"> </i>
               </Link>
             </li>
           )}
-          {menu===250?(<li>
-            <Link to="/setings">
-              <i class="fa-solid fa-gear"> account</i>
-            </Link>
-          </li>):(<li>
-            <Link to="/setings">
-              <i class="fa-solid fa-gear fa-xl"></i>
-            </Link>
-          </li>)}
+          {menu === 250 ? (
+            <li>
+              <Link to="/setings">
+                <i className="fa-solid fa-gear"> account</i>
+              </Link>
+            </li>
+          ) : (
+            <li>
+              <Link to="/setings">
+                <i className="fa-solid fa-gear fa-xl"></i>
+              </Link>
+            </li>
+          )}
         </ul>
-      </nav>
+      </nav> */}
       {loading && <Spinner />}
       <InfiniteScroll
         dataLength={articles.length}
