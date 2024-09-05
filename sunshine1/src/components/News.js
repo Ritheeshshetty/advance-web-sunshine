@@ -8,7 +8,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 const News = (props) => {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState(1);
   const [totalResults, setTotalResults] = useState(0);
   // const [menu, setMenu] = useState(20);
   // const handleClick = () => {
@@ -25,17 +25,7 @@ const News = (props) => {
 
   const updateNews = async () => {
     props.setProgress(10);
-    // const url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&category=${props.category}&category=${props.category}&apiKey=${props.apiKey}&page=${page}&pageSize=${props.pageSize}`;
-    // const url = `https://newsapi.org/v2/top-headlines?country=${
-    //   props.country
-    // }&category=${props.category}&category=${props.category}&apiKey=${
-    //   props.apiKey
-    // }&page=${page < 1 ? page : page + 1}&pageSize=${props.pageSize}`;
-    const url = `https://newsapi.org/v2/top-headlines?&category=${
-      props.category
-    }&category=${props.category}&apiKey=${props.apiKey}&page=${
-      page < 1 ? page : page + 1
-    }&pageSize=${props.pageSize}`;
+    const url = `https://newsapi.org/v2/top-headlines?category=${props.category}&category=${props.category}&category=${props.category}&apiKey=${props.apiKey}&page=${page}&pageSize=${props.pageSize}`;
     setLoading(true);
     let data = await fetch(url);
     props.setProgress(30);
@@ -47,6 +37,8 @@ const News = (props) => {
     props.setProgress(100);
   };
 
+  
+
   useEffect(() => {
     document.title = `${capitalizeFirstLetter(
       props.category
@@ -54,24 +46,19 @@ const News = (props) => {
     updateNews();
     // eslint-disable-next-line
   }, []);
-
   const fetchMoreData = async () => {
     setPage(page + 1);
-    // https://newsapi.org/v2/top-headlines?&category=general&apiKey=088cd910e6d543288bfb7e4deb16587c&page=3&pageSize=4
     const url = `https://newsapi.org/v2/top-headlines?&category=${
       props.category
     }&category=${props.category}&apiKey=${props.apiKey}&page=${
       page < 1 ? page : page + 1
     }&pageSize=${props.pageSize}`;
-    // const url = `https://newsapi.org/v2/top-headlines?country=${props.country
-    // }&category=${props.category}&category=${props.category}&apiKey=${
-    //   props.apiKey
-    // }&page=${page < 1 ? page : page + 1}&pageSize=${props.pageSize}`;
     let data = await fetch(url);
     let parsedData = await data.json();
     setArticles(articles.concat(parsedData.articles));
     setTotalResults(parsedData.totalResults);
   };
+ 
   return (
     <div className="container" id="headerr">
       <header>
@@ -173,12 +160,7 @@ const News = (props) => {
           })}
         </section>
       </InfiniteScroll>
-      {/* <a href="#headerr" className="arrows">
-        <i
-          className="fa-solid fa-circle-arrow-up fa-bounce fa-2xl"
-          style={{ color: "#008bf8" }}
-        />
-      </a> */}
+     
     </div>
   );
 };
