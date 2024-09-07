@@ -96,7 +96,7 @@ const NavBar = () => {
             </li>
           ) : (
             <li>
-              <Link to="/setings">
+              <Link to="/settings">
                 <i className="fa-solid fa-gear fa-xl"></i>
               </Link>
             </li> 

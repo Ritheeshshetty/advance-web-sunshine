@@ -13,6 +13,7 @@ import {
 import News from "./components/News";
 import About from './components/About';
 import Contact from './components/Contact';
+import Settings from './components/Settings';
 
 
 const App=()=>{
@@ -26,7 +27,8 @@ const App=()=>{
       <BrowserRouter>
       <NavBar />
       <Routes>
-            <Route exact path="/" element={<News setProgress={setProgress} apiKey={apiKey} key="general" pageSize={pageSize} country="in" category="general"/>}/>
+            {/* <Route exact path="/" element={<News setProgress={setProgress} apiKey={apiKey} key="general" pageSize={pageSize} country="in" category="general"/>}/> */}
+            <Route exact path="/" element={<Settings/>}/>
             <Route exact path="/business" element={<News setProgress={setProgress} apiKey={apiKey} key="business" pageSize={pageSize} country="in" category="business"/>}/>
             <Route exact path="/entertainment" element={<News setProgress={setProgress} apiKey={apiKey} key="entertainment" pageSize={pageSize} country="in" category="entertainment"/>}/>
             <Route exact path="/general" element={<News setProgress={setProgress} apiKey={apiKey} key="general" pageSize={pageSize} country="in" category="general"/>}/>
@@ -36,7 +38,8 @@ const App=()=>{
             <Route exact path="/technology" element={<News setProgress={setProgress} apiKey={apiKey} key="technology" pageSize={pageSize} country="in" category="technology"/>}/>
             <Route exact path="/home" element={<News setProgress={setProgress} apiKey={apiKey} key="general" pageSize={pageSize} country="in" category="general"/>}/>
             <Route exact path="/about" element={<About category="About"/> } />
-            <Route exact path="/contact" element={<Contact category="contact"/> }/>
+            <Route exact path="/contact" element={<Contact category="Contact"/> }/>
+            <Route exact path="/settings" element={<Settings category="Settings"/> }/>
           </Routes>
       <Footer/>
       </BrowserRouter>

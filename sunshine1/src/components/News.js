@@ -37,8 +37,6 @@ const News = (props) => {
     props.setProgress(100);
   };
 
-  
-
   useEffect(() => {
     document.title = `${capitalizeFirstLetter(
       props.category
@@ -58,12 +56,14 @@ const News = (props) => {
     setArticles(articles.concat(parsedData.articles));
     setTotalResults(parsedData.totalResults);
   };
- 
+
   return (
     <div className="container" id="headerr">
-      <header>
-        Sunshine Express - Top {capitalizeFirstLetter(props.category)} Headlines
-      </header>
+      <div className="backhead">
+        <header>
+          {capitalizeFirstLetter(props.category)} Headlines
+        </header>
+      </div>
       {/* <nav className="navbar" style={{ minWidth: `${menu}px` }}>
         <ul>
           <button className="menu" onClick={handleClick}>
@@ -160,7 +160,6 @@ const News = (props) => {
           })}
         </section>
       </InfiniteScroll>
-     
     </div>
   );
 };
