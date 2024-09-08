@@ -17,6 +17,25 @@ body {
   background-color: #f8eded;
 }
 
+.homepage {
+  height: 100vh;
+  font-size: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.login {
+  /* position: relative; */
+  height: 100vh;
+  font-size: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* z-index: 99; */
+}
+
 header {
   position: fixed;
   display: flex;
@@ -40,17 +59,17 @@ header {
   text-shadow: 0px 0px 10px white;
   /* background:hsla(0, 0%, 3%, 0.168); */
 }
-.backhead {
-  /* background:hsla(0, 0%, 3%, 0.168);  */
-  /* background-color: rgba(255, 192, 203, 0.545); */
-  /* background-color: #5d001da0; */
-  /* width: 100%; 
+/* .backhead {
+  background:hsla(0, 0%, 3%, 0.168); 
+  background-color: rgba(255, 192, 203, 0.545);
+  background-color: #5d001da0;
+  width: 100%; 
   left: 0;
   top: 10%; 
   padding: 30px;
   border-radius: 0px;
-  box-shadow: none; */
-}
+  box-shadow: none;
+} */
 .category {
   position: fixed;
   top: 0px;
@@ -70,6 +89,7 @@ header {
   background-color: black;
   padding: 10px;
   border-radius: 20px;
+  border: solid 2px black;
 }
 .category li a {
   color: white;
@@ -78,7 +98,7 @@ header {
 
 .category li:hover {
   /* background-color: white; */
-  border: solid 1px white;
+  border: solid 2px white;
 }
 /* .category li a:hover {
   color: black;
@@ -183,12 +203,11 @@ img[alt="profile"] {
 img[alt="profile"]:hover {
   border: solid 5px white;
 }
-.profile button{
+.profile button {
   width: 150px;
   height: 40px;
   border-radius: 20px;
   cursor: pointer;
-  
 }
 
 /* .arrows {

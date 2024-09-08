@@ -1,6 +1,6 @@
 // import logo from './logo.svg';
 // import "./App.css";
-import React, { useState } from 'react'
+import React, { useState} from 'react'
 import Footer from "./components/Footer";
 import NavBar from "./components/NavBar";
 // eslint-disable-next-line 
@@ -14,9 +14,22 @@ import News from "./components/News";
 import About from './components/About';
 import Contact from './components/Contact';
 import Settings from './components/Settings';
+import ShowNav from './components/ShowNav';
+import HomePage from './components/HomePage';
+import Login from './components/Login';
 
 
 const App=()=>{
+  // const location = useLocation();
+  // const [ShowNav, setShowNav] = useState(false);
+  // useEffect(() => {},[location]);
+  // if (location.pathname === "/") {
+  //   setShowNav(false);
+  // } else {
+  //   setShowNav(true);
+  // }
+
+  
   const pageSize=8;
   const apiKey=process.env.REACT_APP_NEWS_API
   // eslint-disable-next-line
@@ -25,10 +38,16 @@ const App=()=>{
   return (
     <div>
       <BrowserRouter>
-      <NavBar />
+      <ShowNav>
+      {<NavBar />}
+      </ShowNav>
+      <LoadingBar
+            color='#f11946'
+            progress={progress}
+          />
       <Routes>
             {/* <Route exact path="/" element={<News setProgress={setProgress} apiKey={apiKey} key="general" pageSize={pageSize} country="in" category="general"/>}/> */}
-            <Route exact path="/" element={<Settings/>}/>
+            <Route exact path="/" element={<HomePage/>}/>
             <Route exact path="/business" element={<News setProgress={setProgress} apiKey={apiKey} key="business" pageSize={pageSize} country="in" category="business"/>}/>
             <Route exact path="/entertainment" element={<News setProgress={setProgress} apiKey={apiKey} key="entertainment" pageSize={pageSize} country="in" category="entertainment"/>}/>
             <Route exact path="/general" element={<News setProgress={setProgress} apiKey={apiKey} key="general" pageSize={pageSize} country="in" category="general"/>}/>
@@ -40,6 +59,7 @@ const App=()=>{
             <Route exact path="/about" element={<About category="About"/> } />
             <Route exact path="/contact" element={<Contact category="Contact"/> }/>
             <Route exact path="/settings" element={<Settings category="Settings"/> }/>
+            <Route exact path="/login" element={<Login/>}/>
           </Routes>
       <Footer/>
       </BrowserRouter>

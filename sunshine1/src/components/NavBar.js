@@ -1,8 +1,9 @@
-import React,{useState} from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 const NavBar = () => {
   const [menu, setMenu] = useState(20);
+  let navigate = useNavigate();
   const handleClick = () => {
     if (menu === 250) {
       setMenu(20);
@@ -10,6 +11,13 @@ const NavBar = () => {
       setMenu(250);
     }
   };
+  useEffect(() => {
+    console.log("");
+    if (!localStorage.getItem("token")) {
+      navigate("/");
+    }
+  }, [navigate]);
+
   return (
     <div>
       <div className="category">
@@ -99,9 +107,19 @@ const NavBar = () => {
               <Link to="/settings">
                 <i className="fa-solid fa-gear fa-xl"></i>
               </Link>
-            </li> 
-          )}{menu===250?(<ul><li><h1>Headlines</h1></li><li>hello</li> </ul>):(<span></span>)}
-        </ul>       
+            </li>
+          )}
+          {menu === 250 ? (
+            <ul>
+              <li>
+                <h1>Headlines</h1>
+              </li>
+              <li>hello</li>{" "}
+            </ul>
+          ) : (
+            <span></span>
+          )}
+        </ul>
       </nav>
     </div>
   );
