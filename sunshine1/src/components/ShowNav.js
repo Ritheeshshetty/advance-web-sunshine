@@ -8,7 +8,7 @@ const ShowNav = ({ children }) => {
 
   useEffect(() => {
     console.log(location)
-    if (location.pathname === "/" ||location.pathname==='/login') {
+    if (location.pathname === "/" ||location.pathname==='/login'||location.pathname==='/signup') {
         setShowNav(false);
       } else {
         setShowNav(true);

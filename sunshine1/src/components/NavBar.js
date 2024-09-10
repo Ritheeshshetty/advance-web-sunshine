@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate,useLocation } from "react-router-dom";
 
 const NavBar = () => {
+  const location = useLocation();
   const [menu, setMenu] = useState(20);
   let navigate = useNavigate();
   const handleClick = () => {
@@ -13,7 +14,7 @@ const NavBar = () => {
   };
   useEffect(() => {
     console.log("");
-    if (!localStorage.getItem("token")) {
+    if (!localStorage.getItem("token")|| location.pathname==='/signup') {
       navigate("/");
     }
   }, [navigate]);

@@ -17,6 +17,7 @@ import Settings from './components/Settings';
 import ShowNav from './components/ShowNav';
 import HomePage from './components/HomePage';
 import Login from './components/Login';
+import Signup from './components/Signup';
 
 
 const App=()=>{
@@ -60,6 +61,7 @@ const App=()=>{
             <Route exact path="/contact" element={<Contact category="Contact"/> }/>
             <Route exact path="/settings" element={<Settings category="Settings"/> }/>
             <Route exact path="/login" element={<Login/>}/>
+            <Route exact path="/signup" element={<Signup/>}/>
           </Routes>
       <Footer/>
       </BrowserRouter>

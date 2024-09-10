@@ -154,6 +154,7 @@ const News = (props) => {
                   newsUrl={element.url}
                   author={element.author ? element.author : "Unknown"}
                   date={new Date(element.publishedAt).toGMTString()}
+                  name={element.source.name}
                 />
               </article>
             );

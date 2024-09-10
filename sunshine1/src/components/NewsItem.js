@@ -1,7 +1,7 @@
 import React from "react";
 
 const NewsItem = (props) => {
-  let { title, description, imageUrl, newsUrl, author, date } = props;
+  let { title, description, imageUrl, newsUrl, author, date,name } = props;
   return (
     <div>
       <div className="card">
@@ -14,7 +14,7 @@ const NewsItem = (props) => {
           </p>
         </div>
         <a href={newsUrl} rel="noreferrer" target="_blank">
-          <button className="card-button">More info</button>
+          <button className="card-button">{name}</button>
         </a>
       </div>
     </div>
