@@ -4,14 +4,14 @@ import { Link,useNavigate} from 'react-router-dom'
 
 const Signup = () => {
 //   const context = useContext(NoteContext);
-    const host='5000'
+    const host='http://localhost:5000'
     // const {showAlert,host} = context;
   const [credentials, setCredentials] = useState({name:"",email:"",password:"",cpassword:""})
   const navigate = useNavigate();
   const handleSubmit=async(e)=>{
       e.preventDefault();
       const {name,email,password}=credentials
-      const response = await fetch(`http://localhost:${host}/api/auth/createuser/`, {
+      const response = await fetch(`${host}/api/auth/createuser/`, {
           method: "POST", 
           headers: {
             "Content-Type": "application/json",
@@ -50,6 +50,7 @@ const Signup = () => {
   return (
     <>
     <div className="login">
+    <div className="loginimg"><img src="../../login.png" alt=""  style={{height:"600px",width:"700px"}}/> </div>
     <div className='uplog'>
         <form action="" autoComplete="new-password">
         <p className='loginicon'><i className="fa-regular fa-user"></i></p>
@@ -60,11 +61,11 @@ const Signup = () => {
             <label htmlFor="password"></label>
             <input type={passtype} id="password" name='password' value={credentials.password} onChange={onChange} placeholder='Enter your password'  autoComplete="new-password" minLength={5} required/>
             <label htmlFor="cpassword"></label>
-            <i className={`fa-solid fa-${passtype==='password'?'eye-slash':'eye'}`} onClick={pass}></i>
+            <i className={`fa-solid icons2 fa-${passtype==='password'?'eye-slash':'eye'}`} onClick={pass}></i>
             <input type={passtype} id="cpassword" name='cpassword' value={credentials.cpassword} onChange={onChange} placeholder='confirm your entered password' autoComplete="new-password" minLength={5} required/>
             
-            <input type="button" value={"Signup"} onClick={handleSubmit} disabled={credentials.name.length<2&&credentials.password.length<4?true:false} style={{backgroundColor:credentials.name.length<3||credentials.password.length<5||credentials.password!==credentials.cpassword?'#09192e':'#172b46'}}/>
-            <p>Already a user? <Link to="/">click here</Link> </p>
+            <input type="button" value={"Signup"} onClick={handleSubmit} disabled={credentials.name.length<2&&credentials.password.length<4?true:false} style={{color:credentials.name.length<3||credentials.password.length<5||credentials.password!==credentials.cpassword?'black':'white',backgroundColor:credentials.name.length<3||credentials.password.length<5||credentials.password!==credentials.cpassword?'white':'black'}}/>
+            <p>Already a user? <Link to="/login">click here</Link> </p>
         </form>
     </div>
     </div>

@@ -19,22 +19,42 @@ body {
 
 .homepage {
   height: 100vh;
-  font-size: 60px;
+  /* font-size: 60px; */
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   justify-content: center;
   align-items: center;
+  /* background: url(../public/newss.jpg) rgba(76, 175, 80, 0.3) ; */
+  background-repeat: no-repeat;
+  background-position: left;
+  background-size: cover;
+  background-color: #fcf9fe;
+  /* color: pink; */
+  /* text-shadow: #000000 0px 0px 10px; */
+  /* background-clip: border-box; */
 }
-.login {
-  /* position: relative; */
-  height: 100vh;
-  font-size: 30px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  /* z-index: 99; */
+.hometext {
+  font-size: 20px;
+  /* text-wrap: wrap; */
+  max-width: 500px;
 }
+/* .homeimg{
+  height: 300px ;
+  width: 300px;
+} */
+.link {
+  color: white;
+  /* text-shadow: #000000 0px 0px 10px; */
+  background-color: pink;
+  padding: 10px;
+  /* margin-top: 10px; */
+  border-radius: 20px;
+  border: solid white 1.5px;
+}
+.link:hover {
+  border: solid black 1.5px;
+}
+
 
 header {
   position: fixed;
@@ -188,7 +208,7 @@ nav {
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  height: 70vh;
+  height: 78vh;
   gap: 1.6rem;
   /* background-color: pink; */
   padding: 50px 0px;
@@ -208,6 +228,97 @@ img[alt="profile"]:hover {
   height: 40px;
   border-radius: 20px;
   cursor: pointer;
+}
+
+/*Login............*/
+.login {
+  /* position: relative; */
+  height: 100vh;
+  font-size: 20px;
+  display: flex;
+  /* flex-direction: column; */
+  /* justify-content:space-between; */
+  gap: 100px;
+  align-items: center;
+  background-color: white;
+  padding: 20px;
+  /* z-index: 99; */
+}
+.login input {
+  width: 300px;
+  text-align: center;
+  border-radius: 20px;
+  /* padding: 10px; */
+  height: 40px;
+  margin-bottom: 10px;
+  background-color: #f0f0f0;
+}
+#password{
+  position: relative;
+}
+.icons{
+  position: absolute;
+  right: 40px;  
+  top: 210px;
+}
+.icons2{
+  position: absolute;
+  right: 40px;  
+  top: 225px;
+}
+
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px #172b46 inset !important;
+  -webkit-text-fill-color:#f0f0f0 !important;
+}
+.inlog,
+.uplog {
+  width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background-color: #09192e; */
+  background-color: pink;
+  border-radius: 10px;
+  animation: login 1s linear infinite;
+  border: 3px solid #172b46;
+  position: relative;
+  /* padding:20px 0px; */
+  padding: 20px;
+  height: 400px;
+}
+.fa-user {
+  font-size: 50px;
+  margin-bottom: 10px;
+}
+.loginicon {
+  /* margin: 0px 0px 0px 120px; */
+  display: flex;
+  justify-content: center;
+}
+
+.inlog p,
+.uplog p {
+  color: black;
+}
+@keyframes login {
+  0% {
+    border-top: 3px groove black;
+    /* box-shadow:  0px -40px 20px#63f5de ; */
+  }
+  30% {
+    border-right: 3px groove black;
+  }
+  60% {
+    border-bottom: 3px groove black;
+  }
+  80% {
+    border-left: 3px groove black;
+  }
 }
 
 /* .arrows {
@@ -483,7 +594,9 @@ img[alt="profile"]:hover {
   display: flex;
   width: 100%;
   justify-content: center;
-  background-color: #c3c6ce;
+  /* background-color: #c3c6ce; */
+  background-color: pink;
+  border:solid 2px black;
   padding: 10px;
   /* padding-top: 40px; */
 }
