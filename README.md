@@ -25,11 +25,14 @@ RESPONSIVE DESIGN:
 LANDING PAGE ON MOBILE
 ![image](https://github.com/user-attachments/assets/83335a57-a258-43cc-9db4-57eff54d0c2a)
 
+LOGIN PAGE ON MOBILE DEVICES
+![image](https://github.com/user-attachments/assets/379d3743-e5c4-4fe9-98fd-bdf902c65330)
 
-LOGIN ON MOBILE DEVICES
-
+SIGNUP PAGE
+![image](https://github.com/user-attachments/assets/86ee6959-b985-4c4d-b573-941853f69ef1)
 
 HOMEPAGE ON MOBILE DEVICES
+![image](https://github.com/user-attachments/assets/c35d7dad-00e2-4146-9e05-85fa2ab74c59)
 
 
 
