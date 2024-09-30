@@ -22,13 +22,14 @@ HOMEPAGE PAGE
 ![image](https://github.com/user-attachments/assets/ca220cda-170b-45c7-930f-14e3391e24c0)
 
 RESPONSIVE DESIGN:
-HOME PAGE ON MOBILE
-![image](https://github.com/user-attachments/assets/65e4c86a-e0a2-442d-a0d8-d34a1615ebd5)
+LANDING PAGE ON MOBILE
+![image](https://github.com/user-attachments/assets/83335a57-a258-43cc-9db4-57eff54d0c2a)
+
 
 LOGIN ON MOBILE DEVICES
-![image](https://github.com/user-attachments/assets/ff6692f9-87d5-4f4e-8361-9929df51dcb6)
+
 
 HOMEPAGE ON MOBILE DEVICES
-![image](https://github.com/user-attachments/assets/55a4b066-6636-4b5a-a9ba-f540dfbb01a5)
+
 
 
