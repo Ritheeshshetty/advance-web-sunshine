@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate,useLocation } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 const NavBar = () => {
   const location = useLocation();
@@ -12,12 +12,19 @@ const NavBar = () => {
       setMenu(250);
     }
   };
+
   useEffect(() => {
     console.log("");
-    if (!localStorage.getItem("token")|| location.pathname==='/signup') {
+
+    if (!localStorage.getItem("token") || location.pathname === "/signup") {
       navigate("/");
-    }
+    } // eslint-disable-next-line
   }, [navigate]);
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    navigate("/");
+  };
 
   return (
     <div>
@@ -43,9 +50,13 @@ const NavBar = () => {
         <li>
           <Link to="/technology">technology</Link>
         </li>
-        {/* <li className="search">
-          <input type="text" alt="search" />
-        </li> */}
+        <li className="logout">
+          <button onClick={handleLogout}>
+            <Link to="/login">
+              LogOut <i className="fa-solid fa-right-from-bracket"></i>
+            </Link>
+          </button>
+        </li>
       </div>
       <nav className="navbar" style={{ minWidth: `${menu}px` }}>
         <ul>

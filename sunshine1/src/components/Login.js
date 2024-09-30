@@ -56,7 +56,7 @@ const Login=()=> {
           <label htmlFor="password"></label>
           <input type={passtype} id="password" name='password' value={credentials.password} onChange={onChange} placeholder='Enter your password' required/>
           <i className={`fa-solid icons fa-${passtype==='password'?'eye-slash':'eye'}`} onClick={pass}></i>
-          <input type="button" value={"Login"} onClick={handleSubmit}/>
+          <input type="button" value={"Login"} onClick={handleSubmit}  style={{color:credentials.password?'white':'black',backgroundColor:credentials.password?'black':"white"}}/>
           <p>No accounts create one? <Link to="/signup">click here</Link> </p>
       </form>
   </div>

@@ -4,7 +4,7 @@ import Spinner from "./Spinner";
 import PropTypes from "prop-types";
 import InfiniteScroll from "react-infinite-scroll-component";
 // import { Link } from "react-router-dom";
-
+// https://newsapi.org/v2/top-headlines?q=india&apiKey=a4be809850f44780b524ff15c630a110
 const News = (props) => {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -61,8 +61,32 @@ const News = (props) => {
     <div className="container" id="headerr">
       <div className="backhead">
         <header>
+          {/* <marquee behavior="scroll" direction="right" scrollamount="3" scrolldelay="6" truespeed="truespeed" loop='1'>{capitalizeFirstLetter(props.category)} </marquee> */}
           {capitalizeFirstLetter(props.category)} Headlines
         </header>
+        
+        <marquee
+          behavior="scroll"
+          direction="left"
+          scrollamount="1"
+          scrolldelay="10"
+          truespeed="truespeed"
+          loop="1"
+        >
+          Breaking News- Welcome to SunShine Express! We are your go-to source
+          for the latest news and updates from around the world. Our website is
+          designed to provide you with easy access to news articles on a variety
+          of topics, including sports, entertainment, health, technology,
+          science, and more. we bring you the most accurate and up-to-date
+          information on the topics that matter most to you. We use the latest
+          technologies, including ReactJS,Nodejs & MongoDB to deliver a fast and
+          seamless browsing experience that is both user-friendly and
+          aesthetically pleasing. Whether you're a sports enthusiast, a science
+          buff, or simply looking to stay informed on the latest happenings in
+          the world, SunShine Express has you covered. So why wait? Browse our
+          website today and stay informed on the topics that matter most to you!
+          - Breaking News
+        </marquee>
       </div>
       {/* <nav className="navbar" style={{ minWidth: `${menu}px` }}>
         <ul>
