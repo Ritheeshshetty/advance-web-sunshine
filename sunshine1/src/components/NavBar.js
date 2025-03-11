@@ -4,6 +4,7 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 const NavBar = () => {
   const location = useLocation();
   const [menu, setMenu] = useState(20);
+  const [menuItems, setMenuItems] = useState("");
   let navigate = useNavigate();
   const handleClick = () => {
     if (menu === 250) {
@@ -11,6 +12,11 @@ const NavBar = () => {
     } else {
       setMenu(250);
     }
+  };
+  const modal = document.querySelector("#modal");
+
+  const menuBar = () => {
+    modal.showModal();
   };
 
   useEffect(() => {
@@ -56,6 +62,12 @@ const NavBar = () => {
               LogOut <i className="fa-solid fa-right-from-bracket"></i>
             </Link>
           </button>
+        </li>
+        <li className="menu-bar">
+          <i class="fa-solid fa-bars fa-xl" onClick={menuBar}></i>
+          <dialog className="modal" id="modal">
+            <Link to="/settings">Settings</Link>
+          </dialog>
         </li>
       </div>
       <nav className="navbar" style={{ minWidth: `${menu}px` }}>

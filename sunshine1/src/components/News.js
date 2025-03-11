@@ -10,6 +10,14 @@ const News = (props) => {
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
   const [totalResults, setTotalResults] = useState(0);
+  const [color, setColor] = useState("#f0c947");
+
+  const changeColor = () => {
+    const newColor = color === "#f0c947" ? "#fff" : "#f0c947"; // Toggle color
+    setColor(newColor);
+    document.documentElement.style.setProperty("--orange", newColor);
+    console.log("clicked");
+  };
   // const [menu, setMenu] = useState(20);
   // const handleClick = () => {
   //   if (menu === 250) {
@@ -62,9 +70,16 @@ const News = (props) => {
       <div className="backhead">
         <header>
           {/* <marquee behavior="scroll" direction="right" scrollamount="3" scrolldelay="6" truespeed="truespeed" loop='1'>{capitalizeFirstLetter(props.category)} </marquee> */}
-          {capitalizeFirstLetter(props.category)} Headlines
+          {capitalizeFirstLetter(props.category)} Headlines{" "}
+          {color === "#f0c947" ? (
+            <i className="fa-solid fa-circle bulb" onClick={changeColor}></i>
+          ) : (
+            <i className="fa-solid fa-moon bulb" onClick={changeColor}></i>
+          )}
+          {/* <i className="fa-solid fa-circle bulb" onClick={changeColor}></i> */}
+          {/* <i className="fa-solid fa-moon bulb" onClick={changeColor}></i> */}
         </header>
-        
+
         <marquee
           behavior="scroll"
           direction="left"
