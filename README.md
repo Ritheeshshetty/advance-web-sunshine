@@ -7,24 +7,32 @@ Leverages the context API for efficient data access and state management through
 Nodejs and Expressjs are used for routing, authentication, connection in backend.
 
 LANDING PAGE
-![image](https://github.com/user-attachments/assets/04e9eee5-82d0-42e8-8543-2b271ece3077)
+![image](https://github.com/user-attachments/assets/c5f01e37-224c-4712-b577-4ba07f041c21)
+
 
 LOGIN PAGE
-![image](https://github.com/user-attachments/assets/d0c234fe-9e4d-423b-9547-abbcf65a3a2a)
+![image](https://github.com/user-attachments/assets/7c3e4284-bff3-4cd0-9d38-33e645514e52)
+
 
 SIGNUP PAGE
-![image](https://github.com/user-attachments/assets/9cea1e8a-ec18-4b64-9260-e0125acfed7a)
+![image](https://github.com/user-attachments/assets/c0b87834-b36b-4cc5-9899-420c2673bb34)
+
 
 HOMEPAGE PAGE
-![image](https://github.com/user-attachments/assets/fe25e1be-09ec-47c8-8cbe-385b613d4752)
+![image](https://github.com/user-attachments/assets/ca220cda-170b-45c7-930f-14e3391e24c0)
 
-SETTINGS PAGE
-![image](https://github.com/user-attachments/assets/0150a6fb-2c9d-4278-96da-b38ee08e716e)
+RESPONSIVE DESIGN:
+LANDING PAGE ON MOBILE
+![image](https://github.com/user-attachments/assets/83335a57-a258-43cc-9db4-57eff54d0c2a)
 
-ABOUT US
-![image](https://github.com/user-attachments/assets/cb0d1c32-aef4-4f51-b190-f3afecf38796)
+LOGIN PAGE ON MOBILE DEVICES
+![image](https://github.com/user-attachments/assets/379d3743-e5c4-4fe9-98fd-bdf902c65330)
 
-MENU BAR
-![image](https://github.com/user-attachments/assets/42702f07-68b3-467b-a624-ed6b14afbacf)
+SIGNUP PAGE
+![image](https://github.com/user-attachments/assets/86ee6959-b985-4c4d-b573-941853f69ef1)
+
+HOMEPAGE ON MOBILE DEVICES
+![image](https://github.com/user-attachments/assets/c35d7dad-00e2-4146-9e05-85fa2ab74c59)
+
 
 
