@@ -1,18 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 
 const NavBar = () => {
   const location = useLocation();
-  const [menu, setMenu] = useState(20);
-  const [menuItems, setMenuItems] = useState("");
+  // const [menu, setMenu] = useState(20);
+  // const [menuItems, setMenuItems] = useState("");
   let navigate = useNavigate();
-  const handleClick = () => {
-    if (menu === 250) {
-      setMenu(20);
-    } else {
-      setMenu(250);
-    }
-  };
+  // const handleClick = () => {
+  //   if (menu === 250) {
+  //     setMenu(20);
+  //   } else {
+  //     setMenu(250);
+  //   }
+  // };
   const modal = document.querySelector("#modal");
 
   const menuBar = () => {
@@ -70,7 +70,7 @@ const NavBar = () => {
           </dialog>
         </li>
       </div>
-      <nav className="navbar" style={{ minWidth: `${menu}px` }}>
+      {/* <nav className="navbar" style={{ minWidth: `${menu}px` }}>
         <ul>
           <button className="menu" onClick={handleClick}>
             {menu === 250 ? (
@@ -144,7 +144,7 @@ const NavBar = () => {
             <span></span>
           )}
         </ul>
-      </nav>
+      </nav> */}
     </div>
   );
 };
