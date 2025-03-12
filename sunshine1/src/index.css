@@ -22,11 +22,12 @@
   /* --orange: #0366fc; */
   /* --orange: #5785c9; */
 }
-:root{
+:root {
   --orange: #f0c947;
-  --oldlace:#f9f5e8;
-  --snow:#fcf9fe;
-  --dark:#000000;
+  --oldlace: #f9f5e8;
+  --snow: #fcf9fe;
+  --dark: #000000;
+  --grey:#ccc;
 }
 body {
   /* background-color: #f8eded;
@@ -67,9 +68,9 @@ body {
   border-radius: 50%;
   /* padding: 0px; */
 }
-.bulb:hover{
+.bulb:hover {
   text-shadow: var(--orange) 0px -0px 10px;
-  box-shadow: var(--snow) 0px 0px 10px ;
+  box-shadow: var(--snow) 0px 0px 10px;
 }
 .hometext {
   font-size: 20px;
@@ -152,7 +153,7 @@ header {
   position: relative;
   display: flex;
   /* display: inline-block; */
-  justify-content: center;
+  justify-content: center; 
   /* text-align: center; */
   /* top: 20%; */
   /* margin-top: 200px; */
@@ -161,7 +162,7 @@ header {
   margin-top: 89px;
   /* color: black; */
   color: white;
-  background-color: #000000;
+  background-color: var(--dark);
   z-index: 1;
   text-wrap: nowrap;
   /* align-items: center; */
@@ -174,6 +175,294 @@ header {
   /* border-radius: 25px; */
   /* text-shadow: 0px 0px 10px white; */
   /* text-shadow: 0px 0px 10px var(--orange); */
+}
+
+/* Admin User css */
+/* .admin-users-container {
+  width: 80%;
+  margin: auto;
+  text-align: center;
+  padding: 20px;
+}
+
+.admin-users-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.loading-text {
+  font-size: 18px;
+  color: #777;
+}
+
+.user-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.user-card {
+  width: 60%;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  transition: transform 0.2s ease-in-out;
+}
+
+.user-card:hover {
+  transform: scale(1.03);
+}
+
+.user-info {
+  flex: 1;
+  text-align: left;
+}
+
+.user-info h3 {
+  margin: 0;
+  font-size: 20px;
+  color: #333;
+}
+
+.user-info p {
+  margin: 5px 0;
+  font-size: 16px;
+  color: #555;
+}
+
+.admin-yes {
+  color: green;
+  font-weight: bold;
+}
+
+.admin-no {
+  color: red;
+  font-weight: bold;
+} */
+
+/* ************************* Before adding edit and delete option ************************************ */
+/* .userdash {
+  height: 500px; 
+  overflow-y: auto;
+  border: 1px solid var(--grey);
+  
+  background-color: var(--snow);
+}
+
+.admin-users-container {
+  width: 80%;
+  margin: auto;
+  text-align: center;
+  padding: 20px;
+}
+
+.admin-users-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.loading-text {
+  font-size: 18px;
+  color: #777;
+  text-align: center;
+  padding: 10px;
+}
+
+.user-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.user-card {
+  width: 60%;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  transition: transform 0.2s ease-in-out;
+}
+
+.user-card:hover {
+  transform: scale(1.03);
+}
+
+.user-info {
+  flex: 1;
+  text-align: left;
+}
+
+.user-info h3 {
+  margin: 0;
+  font-size: 20px;
+  color: #333;
+}
+
+.user-info p {
+  margin: 5px 0;
+  font-size: 16px;
+  color: #555;
+}
+
+.admin-yes {
+  color: green;
+  font-weight: bold;
+}
+
+.admin-no {
+  color: red;
+  font-weight: bold;
+} */
+
+
+/* end of Amin User */
+
+/* ************************* Before adding edit and delete option ************************************ */
+.userdash {
+  height: 500px; 
+  overflow-y: auto;
+  border: 1px solid var(--grey);
+  background-color: var(--snow);
+  /* padding-top: 20px; */
+}
+
+.admin-users-container {
+  width: 80%;
+  margin: auto;
+  text-align: center;
+  padding: 20px;
+}
+
+.admin-users-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.loading-text {
+  font-size: 18px;
+  color: #777;
+  text-align: center;
+  padding: 10px;
+}
+
+.user-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.user-card {
+  width: 60%;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.2s ease-in-out;
+}
+
+.user-card:hover {
+  transform: scale(1.03);
+}
+
+.user-info {
+  flex: 1;
+  text-align: left;
+}
+
+.user-info h3 {
+  margin: 0;
+  font-size: 20px;
+  color: #333;
+}
+
+.user-info p {
+  margin: 5px 0;
+  font-size: 16px;
+  color: #555;
+}
+
+.admin-yes {
+  color: green;
+  font-weight: bold;
+}
+
+.admin-no {
+  color: red;
+  font-weight: bold;
+}
+
+.user-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.edit-icon, .delete-icon {
+  font-size: 20px;
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
+}
+
+.edit-icon:hover {
+  color: #007bff; /* Blue color */
+}
+
+.delete-icon:hover {
+  color: #dc3545; /* Red color */
+}
+
+/* end of Amin User */
+.adminNav{
+  display: block;
+  width: 200px;
+  height: 78vh;
+  margin-bottom: 0;
+   border-inline: solid var(--orange) 5px;
+}
+
+.userdash{
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 100px;
+  left: 240px;
+  z-index: 999;
+  height: 78vh;
+  width: 1170px;
+  border-radius: 20px;
+  background-color: var(--oldlace);
+  border: solid #000000 2px;
+}
+.chart-container {
+  width: 700px;
+  height: 400px;
+}
+.dashboard .userdash{ 
+ /* background-color: #000000; */
+ width:400px;
+ height: 250px;
+ overflow-y: hidden;
+ left: 50px;
+}
+.dashboard .userdash .chart-container { 
+ /* background-color: #000000; */
+ width: 300px;
+}
+.dashboard h1,.admin-stats-container h1{
+  padding-top: 20px;
 }
 /* .backhead {
   background:hsla(0, 0%, 3%, 0.168); 
@@ -242,8 +531,8 @@ header {
 ul {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 50px;
+  /* align-items: center; */
+  gap: 20px;
 }
 
 ul li {
@@ -257,19 +546,18 @@ ul li button {
   font-weight: 700;
   text-decoration: none;
   text-transform: uppercase;
-  color: black;
+  color: var(--snow);
   padding: 5px;
   /* transition: 0.5s ease; */
   transition: 0.1s ease;
 }
 
 ul:hover li a {
-  color: #008bf8;
-  color: white;
+  color: var(--orange);
 }
 
 ul:hover li a:not(:hover) {
-  color: black;
+  color: grey;
 }
 .navbar {
   position: fixed;
@@ -303,14 +591,14 @@ nav {
   /* flex-wrap: wrap; */
   padding: 20px 20px;
 }
-.menu {
+/* .menu {
   background: inherit;
   border: 0;
   position: fixed;
   top: 150px;
   left: 20px;
   cursor: pointer;
-}
+} */
 /* .image{
   height: 100vh;
 } */
