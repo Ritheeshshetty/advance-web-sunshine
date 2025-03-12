@@ -1,8 +1,28 @@
+// const connectToMongo = require("./db");
+// const express = require("express");
+// var cors = require("cors");
+
+// // const adminRoute = require("./routes/admin-router");
+
+// connectToMongo();
+// const app = express();
+// const port = 5000;
+
+// app.use(cors());
+// app.use(express.json());
+
+// app.use("/api/auth", require("./routes/auth"));
+
+// // Admin Route
+// app.use("/api/admin", require("./routes/admin-router"));
+
+// app.listen(port, () => {
+//   console.log(`Sunshine Express backend listening on port ${port}`);
+// });
+
 const connectToMongo = require("./db");
 const express = require("express");
 var cors = require("cors");
-
-// const adminRoute = require("./routes/admin-router");
 
 connectToMongo();
 const app = express();
@@ -11,11 +31,13 @@ const port = 5000;
 app.use(cors());
 app.use(express.json());
 
+// Authentication Routes
 app.use("/api/auth", require("./routes/auth"));
-// app.use('/api/notes',require('./routes/userData'))
 
-// Admin Route
+// Admin Routes
 app.use("/api/admin", require("./routes/admin-router"));
+
+
 
 app.listen(port, () => {
   console.log(`Sunshine Express backend listening on port ${port}`);

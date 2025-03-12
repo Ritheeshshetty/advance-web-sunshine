@@ -18,6 +18,9 @@ import ShowNav from './components/ShowNav';
 import HomePage from './components/HomePage';
 import Login from './components/Login';
 import Signup from './components/Signup';
+import AdminLayout from './components/layouts/Admin-Layout';
+import AdminUsers from './components/layouts/Admin-Users';
+import AdminStats from './components/layouts/Admin-Stats';
 
 
 const App=()=>{
@@ -62,6 +65,10 @@ const App=()=>{
             <Route exact path="/settings" element={<Settings category="Settings"/> }/>
             <Route exact path="/login" element={<Login/>}/>
             <Route exact path="/signup" element={<Signup/>}/>
+            <Route exact path='/admin' element={<AdminLayout/>} >
+            <Route exact path='users' element={<AdminUsers/>}/>
+            <Route exact path='stats' element={<AdminStats/>}/>
+            </Route>
           </Routes>
       <Footer/>
       </BrowserRouter>
