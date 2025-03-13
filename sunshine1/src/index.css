@@ -46,6 +46,124 @@ body {
   /* background-color: var(--dark); */
 }
 
+
+/* ************************************************** */
+
+/* 🔹 Menu Icon */
+.menu-bar {
+  cursor: pointer;
+  position: absolute;
+  right: 40px;
+  top: 20px;
+  color: black;
+  
+}
+
+/* 🔹 Side Menu */
+.side-menu {
+  position: fixed;
+  top: 0;
+  right: -250px; /* Initially Hidden */
+  width: 250px;
+  height: 100vh;
+  background: var(--section);
+  box-shadow: -2px 0px 5px rgba(0, 0, 0, 0.3);
+  transition: right 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 9;
+}
+
+/* Show menu when open */
+.side-menu.open {
+  right: 0;
+  z-index: 9;
+}
+
+/* 🔹 Menu Items */
+.side-menu ul {
+  list-style: none;
+  padding: 0;
+  text-align: center;
+
+}
+
+.side-menu ul li {
+  padding: 15px;
+}
+
+.side-menu ul li a {
+  text-decoration: none;
+  color: var(--info);
+  font-size: 18px;
+  transition: color 0.3s ease-in-out;
+}
+
+.side-menu ul li a:hover {
+  color: var(--orange);
+}
+
+/* .navbar {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--orange);
+  padding: 10px 20px;
+}
+
+
+.menu-bar {
+  cursor: pointer;
+  position: absolute;
+  right: 20px;
+  top: 10px;
+}
+
+
+.side-menu {
+  position: fixed;
+  top: 0;
+  right: -250px; 
+  width: 250px;
+  height: 100vh;
+  background: var(--section);
+  box-shadow: -2px 0px 5px rgba(0, 0, 0, 0.3);
+  transition: right 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.side-menu.open {
+  right: 0; 
+}
+
+
+.side-menu ul {
+  list-style: none;
+  padding: 0;
+  text-align: center;
+}
+
+.side-menu ul li {
+  padding: 15px;
+}
+
+.side-menu ul li a {
+  text-decoration: none;
+  color: var(--info);
+  font-size: 18px;
+  transition: color 0.3s ease-in-out;
+}
+
+.side-menu ul li a:hover {
+  color: var(--orange);
+} */
+
+/* ************************************************** */
+
 .homepage {
   height: 100vh;
   display: flex;
@@ -271,7 +389,7 @@ header {
   position: absolute;
   top: 100px;
   left: 240px;
-  z-index: 999;
+  z-index: 8;
   height: 78vh;
   width: 1170px;
   border-radius: 20px;
@@ -1510,3 +1628,10 @@ button {
     display: none;
   }
 }
+
+
+
+
+
+
+

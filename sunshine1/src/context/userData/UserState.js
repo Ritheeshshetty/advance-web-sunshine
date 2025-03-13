@@ -139,14 +139,77 @@
 // export default UserState;
 
 
+// import React, { useState, useEffect } from "react";
+// import UserContext from "./UserContext";
+
+// const UserState = (props) => {
+//   const [users, setUsers] = useState([]);
+//   const [loginCount, setLoginCount] = useState(0);
+//   const [articleViews, setArticleViews] = useState([]);
+
+//   const fetchUsers = async () => {
+//     try {
+//       const token = localStorage.getItem("token");
+//       const response = await fetch("http://localhost:5000/api/admin/users", {
+//         method: "GET",
+//         headers: {
+//           "Content-Type": "application/json",
+//           "auth-token": token,
+//         },
+//       });
+//       const data = await response.json();
+//       if (!response.ok) {
+//         throw new Error(data.error || "Failed to fetch users");
+//       }
+//       setUsers(data);
+//     } catch (error) {
+//       console.error("Error fetching users:", error);
+//     }
+//   };
+
+//   const fetchStats = async () => {
+//     try {
+//       const token = localStorage.getItem("token");
+//       const response = await fetch("http://localhost:5000/api/admin/stats", {
+
+//         headers: { "auth-token": token },
+//       });
+//       const data = await response.json();
+//       console.log("Fetched Stats:", data); // Debugging Output
+//       setLoginCount(data.loginCount);
+//       setArticleViews(data.articleViews);
+//     } catch (error) {
+//       console.error("Error fetching stats:", error);
+//     }
+//   };
+  
+
+//   return (
+//     <UserContext.Provider value={{ users, fetchUsers, loginCount, articleViews, fetchStats }}>
+//       {props.children}
+//     </UserContext.Provider>
+//   );
+// };
+
+// export default UserState;
+
+
+
+
+
+
+
+
 import React, { useState, useEffect } from "react";
 import UserContext from "./UserContext";
 
 const UserState = (props) => {
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState([]); // Stores all users (for admin)
+  const [currentUser, setCurrentUser] = useState(null); // ✅ Stores logged-in user
   const [loginCount, setLoginCount] = useState(0);
   const [articleViews, setArticleViews] = useState([]);
 
+  // Fetch all users (for admin)
   const fetchUsers = async () => {
     try {
       const token = localStorage.getItem("token");
@@ -157,6 +220,7 @@ const UserState = (props) => {
           "auth-token": token,
         },
       });
+
       const data = await response.json();
       if (!response.ok) {
         throw new Error(data.error || "Failed to fetch users");
@@ -167,25 +231,55 @@ const UserState = (props) => {
     }
   };
 
+  // ✅ Fetch the logged-in user's details
+  const fetchCurrentUser = async () => {
+    try {
+      const token = localStorage.getItem("token");
+      if (!token) return;
+
+      const response = await fetch("http://localhost:5000/api/auth/getuser", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "auth-token": token,
+        },
+      });
+
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to fetch user");
+      }
+      setCurrentUser(data); // ✅ Set the logged-in user's data
+    } catch (error) {
+      console.error("Error fetching logged-in user:", error);
+    }
+  };
+
+  // Fetch website statistics (login count, article views, etc.)
   const fetchStats = async () => {
     try {
       const token = localStorage.getItem("token");
       const response = await fetch("http://localhost:5000/api/admin/stats", {
-
         headers: { "auth-token": token },
       });
+
       const data = await response.json();
-      console.log("Fetched Stats:", data); // Debugging Output
       setLoginCount(data.loginCount);
       setArticleViews(data.articleViews);
     } catch (error) {
       console.error("Error fetching stats:", error);
     }
   };
-  
+
+  // Fetch current user when context loads
+  useEffect(() => {
+    fetchCurrentUser();
+  }, []);
 
   return (
-    <UserContext.Provider value={{ users, fetchUsers, loginCount, articleViews, fetchStats }}>
+    <UserContext.Provider
+      value={{ users, fetchUsers, currentUser, fetchCurrentUser, loginCount, articleViews, fetchStats }}
+    >
       {props.children}
     </UserContext.Provider>
   );
