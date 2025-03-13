@@ -890,6 +890,9 @@ input:-webkit-autofill:active {
   /* margin: 110px 0px; */
   padding: 30px;
 }
+.article{
+  padding-bottom: 20px;
+}
 
 /* buttons1 */
 .cta-1 {
