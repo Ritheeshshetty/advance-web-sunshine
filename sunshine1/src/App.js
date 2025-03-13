@@ -24,14 +24,7 @@ import AdminStats from './components/layouts/Admin-Stats';
 
 
 const App=()=>{
-  // const location = useLocation();
-  // const [ShowNav, setShowNav] = useState(false);
-  // useEffect(() => {},[location]);
-  // if (location.pathname === "/") {
-  //   setShowNav(false);
-  // } else {
-  //   setShowNav(true);
-  // }
+ 
 
   
   const pageSize=8;

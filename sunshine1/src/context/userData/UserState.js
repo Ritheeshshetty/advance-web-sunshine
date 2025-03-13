@@ -40,9 +40,6 @@
 
 // export default UserState;
 
-
-
-
 // eslint-disable-next-line
 // const [users, setUsers] = useState([]);
 // const API_URL = "http://localhost:5000/api/admin/users"; // Adjust the URL as needed
@@ -101,7 +98,6 @@
 
 // export default UserState;
 
-
 // import React, { useState, useEffect } from "react";
 // import UserContext from "./UserContext";
 
@@ -137,7 +133,6 @@
 // };
 
 // export default UserState;
-
 
 // import React, { useState, useEffect } from "react";
 // import UserContext from "./UserContext";
@@ -182,7 +177,6 @@
 //       console.error("Error fetching stats:", error);
 //     }
 //   };
-  
 
 //   return (
 //     <UserContext.Provider value={{ users, fetchUsers, loginCount, articleViews, fetchStats }}>
@@ -193,27 +187,23 @@
 
 // export default UserState;
 
-
-
-
-
-
-
-
 import React, { useState, useEffect } from "react";
 import UserContext from "./UserContext";
+
 
 const UserState = (props) => {
   const [users, setUsers] = useState([]); // Stores all users (for admin)
   const [currentUser, setCurrentUser] = useState(null); // ✅ Stores logged-in user
   const [loginCount, setLoginCount] = useState(0);
   const [articleViews, setArticleViews] = useState([]);
+  const API_BASE_URL =
+process.env.REACT_APP_BACKEND_URL;
 
   // Fetch all users (for admin)
   const fetchUsers = async () => {
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch("http://localhost:5000/api/admin/users", {
+      const response = await fetch(`${API_BASE_URL}/api/admin/users`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -237,7 +227,7 @@ const UserState = (props) => {
       const token = localStorage.getItem("token");
       if (!token) return;
 
-      const response = await fetch("http://localhost:5000/api/auth/getuser", {
+      const response = await fetch(`${API_BASE_URL}/api/auth/getuser`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -278,7 +268,15 @@ const UserState = (props) => {
 
   return (
     <UserContext.Provider
-      value={{ users, fetchUsers, currentUser, fetchCurrentUser, loginCount, articleViews, fetchStats }}
+      value={{
+        users,
+        fetchUsers,
+        currentUser,
+        fetchCurrentUser,
+        loginCount,
+        articleViews,
+        fetchStats,
+      }}
     >
       {props.children}
     </UserContext.Provider>
