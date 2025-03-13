@@ -672,11 +672,39 @@ const News = (props) => {
   const API_BASE_URL =
     process.env.REACT_APP_BACKEND_URL || "http://localhost:5000";
 
+  // const changeColor = () => {
+  //   const newColor = color === "#f0c947" ? "#fff" : "#f0c947"; // Toggle color
+  //   setColor(newColor);
+  //   document.documentElement.style.setProperty("--orange", newColor);
+  // };
+
+
+
+  
+  // const changeColor = () => {
+  //   const newColor = color === "#f0c947" ? "#121212" : "#f0c947"; // Toggle color
+  //   setColor(newColor);
+  //   document.documentElement.style.setProperty("--orange", newColor);
+  //   document.documentElement.style.setProperty("--dark", "#fff");
+  //   document.documentElement.style.setProperty("--snow", "#121212");
+  //   document.documentElement.style.setProperty("--section", "#121212");
+
+  //   // ✅ Save selected color in localStorage
+  //   localStorage.setItem("themeColor", newColor);
+  // };
+
+
+
   const changeColor = () => {
-    const newColor = color === "#f0c947" ? "#fff" : "#f0c947"; // Toggle color
-    setColor(newColor);
-    document.documentElement.style.setProperty("--orange", newColor);
+    const newTheme = document.body.classList.contains("dark-mode") ? "light" : "dark";
+    
+    document.body.classList.toggle("dark-mode", newTheme === "dark");
+    document.body.classList.toggle("light-mode", newTheme === "light");
+  
+    // ✅ Save theme in localStorage
+    localStorage.setItem("theme", newTheme);
   };
+  
 
   const capitalizeFirstLetter = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
@@ -708,13 +736,51 @@ const News = (props) => {
     }
   };
 
+  // useEffect(() => {
+  //   document.title = `${capitalizeFirstLetter(
+  //     props.category
+  //   )} - SunShine Express`;
+  //   updateNews();
+  //   // eslint-disable-next-line
+  // }, []);
+
+
+
+
+  // useEffect(() => {
+  //   // ✅ Load theme from localStorage
+  //   const savedColor = localStorage.getItem("themeColor");
+  //   if (savedColor) {
+  //     setColor(savedColor);
+  //     document.documentElement.style.setProperty("--orange", savedColor);
+  //   }
+
+  //   document.title = `${capitalizeFirstLetter(
+  //     props.category
+  //   )} - SunShine Express`;
+  //   updateNews();
+  //   // eslint-disable-next-line
+  // }, []);
+
+
+  
   useEffect(() => {
-    document.title = `${capitalizeFirstLetter(
-      props.category
-    )} - SunShine Express`;
+    // ✅ Load theme from localStorage
+    const savedTheme = localStorage.getItem("theme") || "light"; // Default to light mode
+    
+    if (savedTheme === "dark") {
+      document.body.classList.add("dark-mode");
+      document.body.classList.remove("light-mode");
+    } else {
+      document.body.classList.add("light-mode");
+      document.body.classList.remove("dark-mode");
+    }
+  
+    document.title = `${capitalizeFirstLetter(props.category)} - SunShine Express`;
     updateNews();
     // eslint-disable-next-line
   }, []);
+  
 
   const fetchMoreData = async () => {
     try {
