@@ -501,6 +501,160 @@
 
 // export default News;
 
+// import React, { useEffect, useState } from "react";
+// import NewsItem from "./NewsItem";
+// import Spinner from "./Spinner";
+// import PropTypes from "prop-types";
+// import InfiniteScroll from "react-infinite-scroll-component";
+
+// const News = (props) => {
+//   const [articles, setArticles] = useState([]);
+//   const [loading, setLoading] = useState(true);
+//   const [page, setPage] = useState(1);
+//   const [totalResults, setTotalResults] = useState(0);
+//   const [color, setColor] = useState("#f0c947"); // Default color
+
+//   // ✅ Use backend URL dynamically
+//   const API_BASE_URL =
+//     process.env.REACT_APP_BACKEND_URL || "http://localhost:5000";
+
+//   const changeColor = () => {
+//     const newColor = color === "#f0c947" ? "#fff" : "#f0c947"; // Toggle color
+//     setColor(newColor);
+//     document.documentElement.style.setProperty("--orange", newColor);
+//   };
+
+//   const capitalizeFirstLetter = (string) => {
+//     return string.charAt(0).toUpperCase() + string.slice(1);
+//   };
+
+//   const updateNews = async () => {
+//     try {
+//       props.setProgress(10);
+//       setLoading(true);
+
+//       const response = await fetch(
+//         `${API_BASE_URL}/api/news/fetch-news?category=${props.category}`
+//       );
+//       props.setProgress(30);
+//       const parsedData = await response.json();
+//       props.setProgress(70);
+
+//       if (parsedData.articles) {
+//         setArticles(parsedData.articles);
+//         setTotalResults(parsedData.totalResults);
+//       } else {
+//         console.error("No articles found!");
+//       }
+
+//       setLoading(false);
+//       props.setProgress(100);
+//     } catch (error) {
+//       console.error("Error fetching news:", error);
+//     }
+//   };
+
+//   useEffect(() => {
+//     document.title = `${capitalizeFirstLetter(
+//       props.category
+//     )} - SunShine Express`;
+//     updateNews();
+//     // eslint-disable-next-line
+//   }, []);
+
+//   const fetchMoreData = async () => {
+//     try {
+//       const newPage = page + 1;
+//       setPage(newPage);
+
+//       const response = await fetch(
+//         `${API_BASE_URL}/api/news/fetch-news?category=${props.category}`
+//       );
+//       const parsedData = await response.json();
+
+//       if (parsedData.articles) {
+//         setArticles((prevArticles) => [
+//           ...prevArticles,
+//           ...parsedData.articles,
+//         ]);
+//         setTotalResults(parsedData.totalResults);
+//       }
+//     } catch (error) {
+//       console.error("Error fetching more news:", error);
+//     }
+//   };
+
+//   return (
+//     <div className="container" id="headerr">
+//       <div className="backhead">
+//         <header>
+//           {capitalizeFirstLetter(props.category)} Headlines{" "}
+//           {color === "#f0c947" ? (
+//             <i className="fa-solid fa-circle bulb" onClick={changeColor}></i>
+//           ) : (
+//             <i className="fa-solid fa-moon bulb" onClick={changeColor}></i>
+//           )}
+//         </header>
+
+//         <marquee
+//           behavior="scroll"
+//           direction="left"
+//           scrollamount="1"
+//           scrolldelay="10"
+//         >
+//           Breaking News - Welcome to SunShine Express! We bring you the latest
+//           news on various topics including sports, technology, health, and more.
+//         </marquee>
+//       </div>
+
+//       {loading && <Spinner />}
+
+//       <InfiniteScroll
+//         dataLength={articles.length}
+//         next={fetchMoreData}
+//         hasMore={articles.length !== totalResults}
+//         loader={<Spinner />}
+//         style={{ overflow: "hidden" }}
+//       >
+//         <section className="section">
+//           {articles.map((element, index) => (
+//             <article className="article" key={element.url || index}>
+//               <br />
+//               <NewsItem
+//                 title={element.title ? element.title.slice(0, 37) : ""}
+//                 description={
+//                   element.description ? element.description.slice(0, 100) : ""
+//                 }
+//                 imageUrl={element.urlToImage}
+//                 newsUrl={element.url}
+//                 author={element.author || "Unknown"}
+//                 date={new Date(element.publishedAt).toGMTString()}
+//                 name={element.source.name}
+//               />
+//             </article>
+//           ))}
+//         </section>
+//       </InfiniteScroll>
+//     </div>
+//   );
+// };
+
+// News.defaultProps = {
+//   country: "in",
+//   pageSize: 4,
+//   category: "general",
+// };
+
+// News.propTypes = {
+//   country: PropTypes.string,
+//   pageSize: PropTypes.number,
+//   category: PropTypes.string,
+//   setProgress: PropTypes.func.isRequired,
+// };
+
+// export default News;
+
+// **********************************//
 import React, { useEffect, useState } from "react";
 import NewsItem from "./NewsItem";
 import Spinner from "./Spinner";
@@ -514,7 +668,7 @@ const News = (props) => {
   const [totalResults, setTotalResults] = useState(0);
   const [color, setColor] = useState("#f0c947"); // Default color
 
-  // ✅ Use backend URL dynamically
+  // ✅ Use backend URL dynamically from .env
   const API_BASE_URL =
     process.env.REACT_APP_BACKEND_URL || "http://localhost:5000";
 
@@ -534,7 +688,7 @@ const News = (props) => {
       setLoading(true);
 
       const response = await fetch(
-        `${API_BASE_URL}/api/news/fetch-news?category=${props.category}`
+        `${API_BASE_URL}/api/news/fetch-news?category=${props.category}&page=1`
       );
       props.setProgress(30);
       const parsedData = await response.json();
@@ -568,7 +722,7 @@ const News = (props) => {
       setPage(newPage);
 
       const response = await fetch(
-        `${API_BASE_URL}/api/news/fetch-news?category=${props.category}`
+        `${API_BASE_URL}/api/news/fetch-news?category=${props.category}&page=${newPage}`
       );
       const parsedData = await response.json();
 

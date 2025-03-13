@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 // useContext
 
 const Login = () => {
-  const host = process.env.REACT_APP_BACKEND_URL || "http://localhost:5000";
+  const host = process.env.REACT_APP_BACKEND_URL;
   const [credentials, setCredentials] = useState({ email: "", password: "" });
   const navigate = useNavigate();
   const handleSubmit = async (e) => {

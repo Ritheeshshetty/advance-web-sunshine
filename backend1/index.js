@@ -137,11 +137,21 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 // ✅ CORS Configuration (Secure for Hosting)
+// const corsOptions = {
+//   origin: process.env.FRONTEND_URL || "http://localhost:5000",
+//   credentials: true,
+//   methods: ["GET", "POST", "PUT", "DELETE"],
+// };
+
 const corsOptions = {
-  origin: process.env.FRONTEND_URL || "http://localhost:5000",
+  origin: [
+    process.env.FRONTEND_URL || "http://localhost:3000",
+    "https://advance-web-sunshine-front-kker0o1gn-ritheeshshettys-projects.vercel.app",
+  ],
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE"],
 };
+
 app.use(cors(corsOptions));
 app.use(express.json());
 
