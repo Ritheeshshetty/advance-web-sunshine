@@ -187,22 +187,235 @@
 
 // export default UserState;
 
+// import React, { useState, useEffect } from "react";
+// import UserContext from "./UserContext";
+
+
+// const UserState = (props) => {
+//   const [users, setUsers] = useState([]); // Stores all users (for admin)
+//   const [currentUser, setCurrentUser] = useState(null); // ✅ Stores logged-in user
+//   const [loginCount, setLoginCount] = useState(0);
+//   const [articleViews, setArticleViews] = useState([]);
+//   const API_BASE_URL =
+// process.env.REACT_APP_BACKEND_URL;
+
+//   // Fetch all users (for admin)
+//   const fetchUsers = async () => {
+//     try {
+//       const token = localStorage.getItem("token");
+//       const response = await fetch(`${API_BASE_URL}/api/admin/users`, {
+//         method: "GET",
+//         headers: {
+//           "Content-Type": "application/json",
+//           "auth-token": token,
+//         },
+//       });
+
+//       const data = await response.json();
+//       if (!response.ok) {
+//         throw new Error(data.error || "Failed to fetch users");
+//       }
+//       setUsers(data);
+//     } catch (error) {
+//       console.error("Error fetching users:", error);
+//     }
+//   };
+
+//   // ✅ Fetch the logged-in user's details
+//   const fetchCurrentUser = async () => {
+//     try {
+//       const token = localStorage.getItem("token");
+//       if (!token) return;
+
+//       const response = await fetch(`${API_BASE_URL}/api/auth/getuser`, {
+//         method: "POST",
+//         headers: {
+//           "Content-Type": "application/json",
+//           "auth-token": token,
+//         },
+//       });
+
+//       const data = await response.json();
+//       if (!response.ok) {
+//         throw new Error(data.error || "Failed to fetch user");
+//       }
+//       setCurrentUser(data); // ✅ Set the logged-in user's data
+//     } catch (error) {
+//       console.error("Error fetching logged-in user:", error);
+//     }
+//   };
+
+//   // Fetch website statistics (login count, article views, etc.)
+//   const fetchStats = async () => {
+//     try {
+//       const token = localStorage.getItem("token");
+//       const response = await fetch("http://localhost:5000/api/admin/stats", {
+//         headers: { "auth-token": token },
+//       });
+
+//       const data = await response.json();
+//       setLoginCount(data.loginCount);
+//       setArticleViews(data.articleViews);
+//     } catch (error) {
+//       console.error("Error fetching stats:", error);
+//     }
+//   };
+
+//   // Fetch current user when context loads
+//   useEffect(() => {
+//     fetchCurrentUser();
+//   }, []);
+
+//   return (
+//     <UserContext.Provider
+//       value={{
+//         users,
+//         fetchUsers,
+//         currentUser,
+//         fetchCurrentUser,
+//         loginCount,
+//         articleViews,
+//         fetchStats,
+//       }}
+//     >
+//       {props.children}
+//     </UserContext.Provider>
+//   );
+// };
+
+// export default UserState;
+
+
+
+
+
+
+// import React, { useState, useEffect } from "react";
+// import UserContext from "./UserContext";
+
+// const UserState = (props) => {
+//   const [users, setUsers] = useState([]); // Stores all users (for admin)
+//   const [currentUser, setCurrentUser] = useState(null); // ✅ Stores logged-in user
+//   const [loginCount, setLoginCount] = useState(0);
+//   const [articleViews, setArticleViews] = useState([]);
+//   const API_BASE_URL = process.env.REACT_APP_BACKEND_URL;
+
+//   // Fetch all users (for admin)
+//   const fetchUsers = async () => {
+//     try {
+//       const token = localStorage.getItem("token");
+//       if (!token) return; // ✅ Prevent API call if no token
+
+//       const response = await fetch(`${API_BASE_URL}/api/admin/users`, {
+//         method: "GET",
+//         headers: {
+//           "Content-Type": "application/json",
+//           "auth-token": token,
+//         },
+//       });
+
+//       const data = await response.json();
+//       if (!response.ok) {
+//         throw new Error(data.error || "Failed to fetch users");
+//       }
+//       setUsers(data);
+//     } catch (error) {
+//       console.error("⚠️ Error fetching users:", error.message);
+//     }
+//   };
+
+//   // ✅ Fetch the logged-in user's details
+//   const fetchCurrentUser = async () => {
+//     try {
+//       const token = localStorage.getItem("token");
+//       if (!token) return;
+
+//       const response = await fetch(`${API_BASE_URL}/api/auth/getuser`, {
+//         method: "POST",
+//         headers: {
+//           "Content-Type": "application/json",
+//           "auth-token": token,
+//         },
+//       });
+
+//       const data = await response.json();
+//       if (!response.ok) {
+//         throw new Error(data.error || "Failed to fetch user");
+//       }
+//       setCurrentUser(data); // ✅ Set the logged-in user's data
+//     } catch (error) {
+//       console.error("⚠️ Error fetching logged-in user:", error.message);
+//     }
+//   };
+
+//   // Fetch website statistics (login count, article views, etc.)
+//   const fetchStats = async () => {
+//     try {
+//       const token = localStorage.getItem("token");
+//       if (!token) return; // ✅ Prevent API call if no token
+
+//       const response = await fetch(`${API_BASE_URL}/api/admin/stats`, {
+//         headers: { "auth-token": token },
+//       });
+
+//       const data = await response.json();
+//       if (!response.ok) {
+//         throw new Error(data.error || "Failed to fetch stats");
+//       }
+//       setLoginCount(data.loginCount);
+//       setArticleViews(data.articleViews);
+//     } catch (error) {
+//       console.error("⚠️ Error fetching stats:", error.message);
+//     }
+//   };
+
+//   // Fetch current user when context loads
+//   useEffect(() => {
+//     fetchCurrentUser();
+//   }, []);
+
+//   return (
+//     <UserContext.Provider
+//       value={{
+//         users,
+//         fetchUsers,
+//         currentUser,
+//         fetchCurrentUser,
+//         loginCount,
+//         articleViews,
+//         fetchStats,
+//       }}
+//     >
+//       {props.children}
+//     </UserContext.Provider>
+//   );
+// };
+
+// export default UserState;
+
+
+
+
+
+
+
+
 import React, { useState, useEffect } from "react";
 import UserContext from "./UserContext";
-
 
 const UserState = (props) => {
   const [users, setUsers] = useState([]); // Stores all users (for admin)
   const [currentUser, setCurrentUser] = useState(null); // ✅ Stores logged-in user
   const [loginCount, setLoginCount] = useState(0);
   const [articleViews, setArticleViews] = useState([]);
-  const API_BASE_URL =
-process.env.REACT_APP_BACKEND_URL;
+  const API_BASE_URL = process.env.REACT_APP_BACKEND_URL;
 
   // Fetch all users (for admin)
   const fetchUsers = async () => {
     try {
       const token = localStorage.getItem("token");
+      if (!token) return; // ✅ Prevent API call if no token
+
       const response = await fetch(`${API_BASE_URL}/api/admin/users`, {
         method: "GET",
         headers: {
@@ -217,7 +430,7 @@ process.env.REACT_APP_BACKEND_URL;
       }
       setUsers(data);
     } catch (error) {
-      console.error("Error fetching users:", error);
+      console.error("⚠️ Error fetching users:", error.message);
     }
   };
 
@@ -239,9 +452,13 @@ process.env.REACT_APP_BACKEND_URL;
       if (!response.ok) {
         throw new Error(data.error || "Failed to fetch user");
       }
-      setCurrentUser(data); // ✅ Set the logged-in user's data
+
+      // ✅ Force `isAdmin` to be a boolean (fix incorrect type)
+      data.isAdmin = data.isAdmin === true || data.isAdmin === "true";
+
+      setCurrentUser(data);
     } catch (error) {
-      console.error("Error fetching logged-in user:", error);
+      console.error("⚠️ Error fetching logged-in user:", error.message);
     }
   };
 
@@ -249,15 +466,20 @@ process.env.REACT_APP_BACKEND_URL;
   const fetchStats = async () => {
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch("http://localhost:5000/api/admin/stats", {
+      if (!token) return; // ✅ Prevent API call if no token
+
+      const response = await fetch(`${API_BASE_URL}/api/admin/stats`, {
         headers: { "auth-token": token },
       });
 
       const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to fetch stats");
+      }
       setLoginCount(data.loginCount);
       setArticleViews(data.articleViews);
     } catch (error) {
-      console.error("Error fetching stats:", error);
+      console.error("⚠️ Error fetching stats:", error.message);
     }
   };
 
@@ -265,6 +487,11 @@ process.env.REACT_APP_BACKEND_URL;
   useEffect(() => {
     fetchCurrentUser();
   }, []);
+
+  // ✅ Debugging: Log `currentUser` to verify data
+  useEffect(() => {
+    console.log("🔍 Current User:", currentUser);
+  }, [currentUser]);
 
   return (
     <UserContext.Provider

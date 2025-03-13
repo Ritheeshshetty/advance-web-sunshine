@@ -24,7 +24,7 @@ const Login = () => {
       //save the auth token and redirect
       localStorage.setItem("token", json.authToken);
       // showAlert("Login successfull 🔥",'success')
-      navigate("/home");
+      navigate("/general");
       // alert(credentials.email);
     } else if (json.error) {
       console.log(json.error);

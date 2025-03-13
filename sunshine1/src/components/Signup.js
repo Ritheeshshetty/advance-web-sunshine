@@ -4,7 +4,7 @@ import { Link,useNavigate} from 'react-router-dom'
 
 const Signup = () => {
 //   const context = useContext(NoteContext);
-    const host='http://localhost:5000'
+    const host=process.env.REACT_APP_BACKEND_URL
     // const {showAlert,host} = context;
   const [credentials, setCredentials] = useState({name:"",email:"",password:"",cpassword:""})
   const navigate = useNavigate();

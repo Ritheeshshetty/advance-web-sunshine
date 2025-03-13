@@ -25,7 +25,7 @@ function AdminLayout() {
             </NavLink>
             </li>
             <li>
-            <NavLink to="/admin">
+            <NavLink to="/admin/home">
               home
             </NavLink>
             </li>
