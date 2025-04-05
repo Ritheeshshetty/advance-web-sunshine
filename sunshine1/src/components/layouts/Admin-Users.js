@@ -50,7 +50,6 @@
 
 // export default AdminUsers;
 
-
 // import React, { useContext, useEffect } from "react";
 // import UserContext from "../../context/userData/UserContext";
 
@@ -92,7 +91,6 @@
 
 // export default AdminUsers;
 
-
 // import React, { useContext, useEffect } from "react";
 // import UserContext from "../../context/userData/UserContext";
 // // import "./AdminUsers.css"; // Import the CSS file
@@ -132,13 +130,11 @@
 
 // export default AdminUsers;
 
-
 //*********************************************** */
 // no delete icons
 // import React, { useContext, useEffect, useState } from "react";
 // import InfiniteScroll from "react-infinite-scroll-component";
 // import UserContext from "../../context/userData/UserContext";
-
 
 // function AdminUsers() {
 //   const { users, fetchUsers } = useContext(UserContext);
@@ -198,7 +194,6 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { FaEdit, FaTrash } from "react-icons/fa"; // Import icons
 import UserContext from "../../context/userData/UserContext";
 
-
 function AdminUsers() {
   const { users, fetchUsers } = useContext(UserContext);
   const [page, setPage] = useState(1);
@@ -209,9 +204,8 @@ function AdminUsers() {
   }, []);
 
   useEffect(() => {
-    setDisplayUsers(users.slice(0, 10)); 
+    setDisplayUsers(users.slice(0, 10));
     // console.log(users);
-    
   }, [users]);
 
   const fetchMoreUsers = () => {
@@ -248,14 +242,17 @@ function AdminUsers() {
                 <div className="user-info">
                   <h3>{user.name}</h3>
                   <p>Email: {user.email}</p>
-                  <p>Admin: <span className={user.isAdmin ? "admin-yes" : "admin-no"}>
-                    {user.isAdmin ? "Yes" : "No"}
-                  </span></p>
+                  <p>
+                    Admin:{" "}
+                    <span className={user.isAdmin ? "admin-yes" : "admin-no"}>
+                      {user.isAdmin ? "Yes" : "No"}
+                    </span>
+                  </p>
                 </div>
-                <div className="user-actions">
+                {/* <div className="user-actions">
                   <FaEdit className="edit-icon" onClick={() => handleEdit(user._id)} />
                   <FaTrash className="delete-icon" onClick={() => handleDelete(user._id)} />
-                </div>
+                </div> */}
               </div>
             ))}
           </div>
@@ -266,5 +263,3 @@ function AdminUsers() {
 }
 
 export default AdminUsers;
-
-

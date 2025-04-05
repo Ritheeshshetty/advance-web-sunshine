@@ -190,7 +190,6 @@
 // import React, { useState, useEffect } from "react";
 // import UserContext from "./UserContext";
 
-
 // const UserState = (props) => {
 //   const [users, setUsers] = useState([]); // Stores all users (for admin)
 //   const [currentUser, setCurrentUser] = useState(null); // ✅ Stores logged-in user
@@ -284,11 +283,6 @@
 // };
 
 // export default UserState;
-
-
-
-
-
 
 // import React, { useState, useEffect } from "react";
 // import UserContext from "./UserContext";
@@ -393,48 +387,155 @@
 
 // export default UserState;
 
+// import React, { useState, useEffect } from "react";
+// import UserContext from "./UserContext";
 
+// const UserState = (props) => {
+//   const [users, setUsers] = useState([]); // Stores all users (for admin)
+//   const [currentUser, setCurrentUser] = useState(null); // ✅ Stores logged-in user
+//   const [loginCount, setLoginCount] = useState(0);
+//   const [articleViews, setArticleViews] = useState([]);
+//   const API_BASE_URL = process.env.REACT_APP_BACKEND_URL;
 
+//   // Fetch all users (for admin)
+//   const fetchUsers = async () => {
+//     try {
+//       const token = localStorage.getItem("token");
+//       if (!token) return; // ✅ Prevent API call if no token
 
+//       const response = await fetch(`${API_BASE_URL}/api/admin/users`, {
+//         method: "GET",
+//         headers: {
+//           "Content-Type": "application/json",
+//           "auth-token": token,
+//         },
+//       });
 
+//       const data = await response.json();
+//       if (!response.ok) {
+//         throw new Error(data.error || "Failed to fetch users");
+//       }
+//       setUsers(data);
+//     } catch (error) {
+//       console.error("⚠️ Error fetching users:", error.message);
+//     }
+//   };
 
+//   // ✅ Fetch the logged-in user's details
+//   const fetchCurrentUser = async () => {
+//     try {
+//       const token = localStorage.getItem("token");
+//       if (!token) return;
 
+//       const response = await fetch(`${API_BASE_URL}/api/auth/getuser`, {
+//         method: "POST",
+//         headers: {
+//           "Content-Type": "application/json",
+//           "auth-token": token,
+//         },
+//       });
+
+//       const data = await response.json();
+//       if (!response.ok) {
+//         throw new Error(data.error || "Failed to fetch user");
+//       }
+
+//       // ✅ Force `isAdmin` to be a boolean (fix incorrect type)
+//       data.isAdmin = data.isAdmin === true || data.isAdmin === "true";
+
+//       setCurrentUser(data);
+//     } catch (error) {
+//       console.error("⚠️ Error fetching logged-in user:", error.message);
+//     }
+//   };
+
+//   // Fetch website statistics (login count, article views, etc.)
+//   const fetchStats = async () => {
+//     try {
+//       const token = localStorage.getItem("token");
+//       if (!token) return; // ✅ Prevent API call if no token
+
+//       const response = await fetch(`${API_BASE_URL}/api/admin/stats`, {
+//         headers: { "auth-token": token },
+//       });
+
+//       const data = await response.json();
+//       if (!response.ok) {
+//         throw new Error(data.error || "Failed to fetch stats");
+//       }
+//       setLoginCount(data.loginCount);
+//       setArticleViews(data.articleViews);
+//     } catch (error) {
+//       console.error("⚠️ Error fetching stats:", error.message);
+//     }
+//   };
+
+//   // Fetch current user when context loads
+//   useEffect(() => {
+//     fetchCurrentUser();
+//   }, []);
+
+//   // ✅ Debugging: Log `currentUser` to verify data
+//   useEffect(() => {
+//     console.log("🔍 Current User:", currentUser);
+//   }, [currentUser]);
+
+//   return (
+//     <UserContext.Provider
+//       value={{
+//         users,
+//         fetchUsers,
+//         currentUser,
+//         fetchCurrentUser,
+//         loginCount,
+//         articleViews,
+//         fetchStats,
+//       }}
+//     >
+//       {props.children}
+//     </UserContext.Provider>
+//   );
+// };
+
+// export default UserState;
 
 import React, { useState, useEffect } from "react";
 import UserContext from "./UserContext";
 
 const UserState = (props) => {
   const [users, setUsers] = useState([]); // Stores all users (for admin)
-  const [currentUser, setCurrentUser] = useState(null); // ✅ Stores logged-in user
+  const [currentUser, setCurrentUser] = useState(null); // Stores logged-in user
   const [loginCount, setLoginCount] = useState(0);
+  const [dailyLogins, setDailyLogins] = useState({});
+  const [userJoinsByDay, setUserJoinsByDay] = useState({});
+  const [userJoinsByMonth, setUserJoinsByMonth] = useState({});
+  const [userJoinsByYear, setUserJoinsByYear] = useState({});
   const [articleViews, setArticleViews] = useState([]);
+  const [categoryViews, setCategoryViews] = useState([]);
+
   const API_BASE_URL = process.env.REACT_APP_BACKEND_URL;
 
-  // Fetch all users (for admin)
+  // ✅ Fetch all users (For Admin)
   const fetchUsers = async () => {
     try {
       const token = localStorage.getItem("token");
-      if (!token) return; // ✅ Prevent API call if no token
+      if (!token) return;
 
       const response = await fetch(`${API_BASE_URL}/api/admin/users`, {
         method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          "auth-token": token,
-        },
+        headers: { "Content-Type": "application/json", "auth-token": token },
       });
 
       const data = await response.json();
-      if (!response.ok) {
-        throw new Error(data.error || "Failed to fetch users");
-      }
+      if (!response.ok) throw new Error(data.error || "Failed to fetch users");
+
       setUsers(data);
     } catch (error) {
       console.error("⚠️ Error fetching users:", error.message);
     }
   };
 
-  // ✅ Fetch the logged-in user's details
+  // ✅ Fetch logged-in user's details
   const fetchCurrentUser = async () => {
     try {
       const token = localStorage.getItem("token");
@@ -442,48 +543,45 @@ const UserState = (props) => {
 
       const response = await fetch(`${API_BASE_URL}/api/auth/getuser`, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "auth-token": token,
-        },
+        headers: { "Content-Type": "application/json", "auth-token": token },
       });
 
       const data = await response.json();
-      if (!response.ok) {
-        throw new Error(data.error || "Failed to fetch user");
-      }
+      if (!response.ok) throw new Error(data.error || "Failed to fetch user");
 
-      // ✅ Force `isAdmin` to be a boolean (fix incorrect type)
-      data.isAdmin = data.isAdmin === true || data.isAdmin === "true";
-
+      data.isAdmin = data.isAdmin === true || data.isAdmin === "true"; // Ensure boolean
       setCurrentUser(data);
     } catch (error) {
       console.error("⚠️ Error fetching logged-in user:", error.message);
     }
   };
 
-  // Fetch website statistics (login count, article views, etc.)
+  // ✅ Fetch website statistics (login count, user registrations, views, etc.)
   const fetchStats = async () => {
     try {
       const token = localStorage.getItem("token");
-      if (!token) return; // ✅ Prevent API call if no token
+      if (!token) return;
 
       const response = await fetch(`${API_BASE_URL}/api/admin/stats`, {
         headers: { "auth-token": token },
       });
 
       const data = await response.json();
-      if (!response.ok) {
-        throw new Error(data.error || "Failed to fetch stats");
-      }
+      if (!response.ok) throw new Error(data.error || "Failed to fetch stats");
+
       setLoginCount(data.loginCount);
-      setArticleViews(data.articleViews);
+      setDailyLogins(data.dailyLoginCount || {});
+      setUserJoinsByDay(data.userJoinsByDay || {});
+      setUserJoinsByMonth(data.userJoinsByMonth || {});
+      setUserJoinsByYear(data.userJoinsByYear || {});
+      setArticleViews(data.articleViews || []);
+      setCategoryViews(data.categoryViews || []);
     } catch (error) {
       console.error("⚠️ Error fetching stats:", error.message);
     }
   };
 
-  // Fetch current user when context loads
+  // ✅ Fetch current user when context loads
   useEffect(() => {
     fetchCurrentUser();
   }, []);
@@ -501,7 +599,12 @@ const UserState = (props) => {
         currentUser,
         fetchCurrentUser,
         loginCount,
+        dailyLogins,
+        userJoinsByDay,
+        userJoinsByMonth,
+        userJoinsByYear,
         articleViews,
+        categoryViews,
         fetchStats,
       }}
     >

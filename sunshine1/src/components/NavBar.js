@@ -10,7 +10,10 @@ const NavBar = () => {
   };
 
   useEffect(() => {
-    if (!localStorage.getItem("token") || window.location.pathname === "/signup") {
+    if (
+      !localStorage.getItem("token") ||
+      window.location.pathname === "/signup"
+    ) {
       navigate("/");
     }
   }, [navigate]);
@@ -51,11 +54,13 @@ const NavBar = () => {
             </Link>
           </button>
         </li> */}
-        
+
         {/* 🔹 Menu Toggle Icon (Bars → X) */}
         <li className="menu-bar">
           <i
-            className={`fa-solid ${menuOpen ? "fa-circle-xmark" : "fa-bars"} fa-xl`}
+            className={`fa-solid ${
+              menuOpen ? "fa-circle-xmark" : "fa-bars"
+            } fa-xl`}
             onClick={menuBar}
           ></i>
         </li>
@@ -65,13 +70,19 @@ const NavBar = () => {
       <div className={`side-menu ${menuOpen ? "open" : ""}`}>
         <ul>
           <li>
-            <Link to="/general" onClick={menuBar}>Home</Link>
+            <Link to="/general" onClick={menuBar}>
+              Home
+            </Link>
           </li>
           <li>
-            <Link to="/settings" onClick={menuBar}>Settings</Link>
+            <Link to="/settings" onClick={menuBar}>
+              Settings
+            </Link>
           </li>
           <li>
-            <Link to="/dashboard" onClick={menuBar}>Dashboard</Link>
+            <Link to="/admin" onClick={menuBar}>
+              Dashboard
+            </Link>
           </li>
         </ul>
       </div>
@@ -81,15 +92,13 @@ const NavBar = () => {
 
 export default NavBar;
 
-
-
 // import React, { useEffect } from "react";
 // import { Link, useNavigate, useLocation } from "react-router-dom";
 
 // const NavBar = () => {
 //   const location = useLocation();
 //   let navigate = useNavigate();
- 
+
 //   const modal = document.querySelector("#modal");
 
 //   const menuBar = () => {
@@ -152,17 +161,18 @@ export default NavBar;
 
 // ************************************************************//
 
-  // const [menu, setMenu] = useState(20);
-  // const [menuItems, setMenuItems] = useState("");
- // const handleClick = () => {
-  //   if (menu === 250) {
-  //     setMenu(20);
-  //   } else {
-  //     setMenu(250);
-  //   }
-  // };
+// const [menu, setMenu] = useState(20);
+// const [menuItems, setMenuItems] = useState("");
+// const handleClick = () => {
+//   if (menu === 250) {
+//     setMenu(20);
+//   } else {
+//     setMenu(250);
+//   }
+// };
 
-{/* <nav className="navbar" style={{ minWidth: `${menu}px` }}>
+{
+  /* <nav className="navbar" style={{ minWidth: `${menu}px` }}>
   <ul>
     <button className="menu" onClick={handleClick}>
       {menu === 250 ? (
@@ -236,14 +246,14 @@ export default NavBar;
       <span></span>
     )}
   </ul>
-</nav> */}
+</nav> */
+}
 
-
-
-
-{/* <i class="fa-solid fa-bars fa-xl" onClick={menuBar}></i>
+{
+  /* <i class="fa-solid fa-bars fa-xl" onClick={menuBar}></i>
           <dialog className="modal" id="modal">
             <Link to="/settings">Settings</Link>
-          </dialog> */}
+          </dialog> */
+}
 
 // ******************************************************//
