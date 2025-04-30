@@ -19,10 +19,25 @@ SIGNUP PAGE
 
 
 HOMEPAGE PAGE
-![image](https://github.com/user-attachments/assets/89fe59d9-8f58-4185-8411-8f99784896dd)
+![image](https://github.com/user-attachments/assets/7d2dfb75-c013-4007-9dde-be319d1c4c07)
 
+Menubar
+![image](https://github.com/user-attachments/assets/c8694476-60b3-4c63-8c6d-051f34d40b99)
 
+Settings Page
+![image](https://github.com/user-attachments/assets/15d62587-9177-4f76-bd05-4074f98f3426)
 
+Admin Dashboard
+![image](https://github.com/user-attachments/assets/8ad97253-f219-4652-894b-a3cfd3a108aa)
+
+Admin Dashboard User information
+![image](https://github.com/user-attachments/assets/f63aaa68-9a8c-4eb8-b930-99b8bda7aa03)
+
+Admin Dashboard User analytics
+![image](https://github.com/user-attachments/assets/a7357c10-796c-4993-b353-d60bb51c1efa)
+
+Dark mode
+![image](https://github.com/user-attachments/assets/b3d8db83-eec7-4ee2-9fcb-7ed3d2e9480a)
 
 
 RESPONSIVE DESIGN:
