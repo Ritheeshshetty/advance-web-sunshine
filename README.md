@@ -1,4 +1,4 @@
-Sunshine Express(MERN)August 2024 - September 2024
+Sunshine Express(MERN) January 2025 - March 2025
 Design a news site focused on privacy that fetches data from NewsAPI and groups news articles.
 Infinite scrolling with a progress bar has been used to make the user experience even more enjoyable.
 Used JWT authentication for a secure login/signup feature.
@@ -19,7 +19,11 @@ SIGNUP PAGE
 
 
 HOMEPAGE PAGE
-![image](https://github.com/user-attachments/assets/ca220cda-170b-45c7-930f-14e3391e24c0)
+![image](https://github.com/user-attachments/assets/89fe59d9-8f58-4185-8411-8f99784896dd)
+
+
+
+
 
 RESPONSIVE DESIGN:
 LANDING PAGE ON MOBILE
