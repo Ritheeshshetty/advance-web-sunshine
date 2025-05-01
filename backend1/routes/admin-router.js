@@ -35,4 +35,16 @@ router.route("/users").get(fetchuser, adminMiddleware, adminController.getAllUse
 // ✅ Add route to get statistics
 router.route("/stats").get(fetchuser, adminMiddleware, adminController.getStats);
 
+
+// Update user by ID (PUT)
+router
+  .route("/users/:id")
+  .put(fetchuser, adminMiddleware, adminController.updateUserById);
+
+// Delete user by ID (DELETE)
+router
+  .route("/users/:id")
+  .delete(fetchuser, adminMiddleware, adminController.deleteUserById);
+
+
 module.exports = router;

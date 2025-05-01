@@ -71,4 +71,49 @@ const getStats = async (req, res, next) => {
     }
 };
 
-module.exports = { getAllUsers, getStats };
+// ✅ Update user
+const updateUserById = async (req, res, next) => {
+    try {
+      const userId = req.params.id;
+      const updateFields = req.body;
+  
+      const updatedUser = await User.findByIdAndUpdate(
+        userId,
+        updateFields,
+        { new: true, select: "-password" } // exclude password
+      );
+  
+      if (!updatedUser) {
+        return res.status(404).json({ error: "User not found." });
+      }
+  
+      res.status(200).json(updatedUser);
+    } catch (error) {
+      next(error);
+    }
+  };
+  
+  // ✅ Delete user
+  const deleteUserById = async (req, res, next) => {
+    try {
+      const userId = req.params.id;
+  
+      const deletedUser = await User.findByIdAndDelete(userId);
+  
+      if (!deletedUser) {
+        return res.status(404).json({ error: "User not found." });
+      }
+  
+      res.status(200).json({ message: "User deleted successfully." });
+    } catch (error) {
+      next(error);
+    }
+  };
+  
+  module.exports = {
+    getAllUsers,
+    getStats,
+    updateUserById,
+    deleteUserById,
+  };
+  

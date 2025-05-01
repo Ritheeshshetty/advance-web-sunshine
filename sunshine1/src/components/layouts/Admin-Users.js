@@ -195,7 +195,7 @@ import { FaEdit, FaTrash } from "react-icons/fa"; // Import icons
 import UserContext from "../../context/userData/UserContext";
 
 function AdminUsers() {
-  const { users, fetchUsers } = useContext(UserContext);
+  const { users,editUser, deleteUser, fetchUsers } = useContext(UserContext);
   const [page, setPage] = useState(1);
   const [displayUsers, setDisplayUsers] = useState([]);
 
@@ -215,14 +215,19 @@ function AdminUsers() {
     setPage(nextPage);
   };
 
-  const handleEdit = (userId) => {
-    console.log("Edit user:", userId);
-    // Implement edit functionality
+  const handleEdit = async (userId) => {
+    const updatedName = prompt("Enter new name:");
+    if (updatedName) {
+      await editUser(userId, { name: updatedName });
+      fetchUsers(); // Refresh list
+    }
   };
 
-  const handleDelete = (userId) => {
-    console.log("Delete user:", userId);
-    // Implement delete functionality
+  const handleDelete = async (userId) => {
+    if (window.confirm("Are you sure you want to delete this user?")) {
+      await deleteUser(userId);
+      fetchUsers(); // Refresh list
+    }
   };
 
   return (
@@ -249,10 +254,10 @@ function AdminUsers() {
                     </span>
                   </p>
                 </div>
-                {/* <div className="user-actions">
+                <div className="user-actions">
                   <FaEdit className="edit-icon" onClick={() => handleEdit(user._id)} />
                   <FaTrash className="delete-icon" onClick={() => handleDelete(user._id)} />
-                </div> */}
+                </div>
               </div>
             ))}
           </div>

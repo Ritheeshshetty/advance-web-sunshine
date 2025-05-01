@@ -581,6 +581,60 @@ const UserState = (props) => {
     }
   };
 
+  // Inside UserState.js *************************************************
+
+// ✅ Edit user (admin only)
+const editUser = async (userId, updatedData) => {
+  try {
+    const token = localStorage.getItem("token");
+    if (!token) return;
+
+    const response = await fetch(`${API_BASE_URL}/api/admin/users/${userId}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        "auth-token": token,
+      },
+      body: JSON.stringify(updatedData),
+    });
+
+    const data = await response.json();
+    if (!response.ok) throw new Error(data.error || "Failed to update user");
+
+    // Update local state
+    setUsers((prevUsers) =>
+      prevUsers.map((user) => (user._id === userId ? data : user))
+    );
+  } catch (error) {
+    console.error("⚠️ Error updating user:", error.message);
+  }
+};
+
+// ✅ Delete user (admin only)
+const deleteUser = async (userId) => {
+  try {
+    const token = localStorage.getItem("token");
+    if (!token) return;
+
+    const response = await fetch(`${API_BASE_URL}/api/admin/users/${userId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        "auth-token": token,
+      },
+    });
+
+    const data = await response.json();
+    if (!response.ok) throw new Error(data.error || "Failed to delete user");
+
+    // Remove user from state
+    setUsers((prevUsers) => prevUsers.filter((user) => user._id !== userId));
+  } catch (error) {
+    console.error("⚠️ Error deleting user:", error.message);
+  }
+};
+
+
   // ✅ Fetch current user when context loads
   useEffect(() => {
     fetchCurrentUser();
@@ -593,21 +647,23 @@ const UserState = (props) => {
 
   return (
     <UserContext.Provider
-      value={{
-        users,
-        fetchUsers,
-        currentUser,
-        fetchCurrentUser,
-        loginCount,
-        dailyLogins,
-        userJoinsByDay,
-        userJoinsByMonth,
-        userJoinsByYear,
-        articleViews,
-        categoryViews,
-        fetchStats,
-      }}
-    >
+  value={{
+    users,
+    fetchUsers,
+    editUser,
+    deleteUser,
+    currentUser,
+    fetchCurrentUser,
+    loginCount,
+    dailyLogins,
+    userJoinsByDay,
+    userJoinsByMonth,
+    userJoinsByYear,
+    articleViews,
+    categoryViews,
+    fetchStats,
+  }}
+>
       {props.children}
     </UserContext.Provider>
   );
