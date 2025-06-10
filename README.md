@@ -5,6 +5,7 @@ Used JWT authentication for a secure login/signup feature.
 Stored user data into MongoDB using bcryptjs for password hashing and also added a salt for security.
 Leverages the context API for efficient data access and state management throughout the application.
 Nodejs and Expressjs are used for routing, authentication, connection in backend.
+![image](https://github.com/user-attachments/assets/e0bd73f6-7d0e-4046-b1f6-092bba7c0e1e)
 
 LANDING PAGE
 ![image](https://github.com/user-attachments/assets/c5f01e37-224c-4712-b577-4ba07f041c21)
